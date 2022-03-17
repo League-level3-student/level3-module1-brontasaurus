@@ -24,6 +24,14 @@ public class ArrayListRemove {
     //    ArrayList
     public static ArrayList<Stuff> cleanOutTheYard( ArrayList<Stuff> yard ) {
         
+    	//
+    	
+    	for (int i = yard.size()-1; i > 0; i--) {
+    		if (yard.get(i).type.equals("dirt")) {
+    			yard.remove(yard.get(i));
+    		}
+    	}
+    	
         return yard;
     }
     
@@ -31,6 +39,13 @@ public class ArrayListRemove {
     //    ArrayList and returns it
     public static ArrayList<Character> removeHashTags(ArrayList<Character> list) {
 
+    	//list.remove("#");
+    	
+    	for (int i = list.size()-1; i > 0; i--) {
+    		if (list.get(i) == '#') {
+    			list.remove(list.get(i));
+    		}
+    	}
         return list;
     }
 }

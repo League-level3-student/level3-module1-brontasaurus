@@ -12,10 +12,28 @@ public class LongChipCompetition {
      * your search.
      */
     private ArrayList<Beatle> theBeatles = new ArrayList<Beatle>();
-
+    double longChip = 0.0;
+String namez;
     public static void main(String[] args) {
         LongChipCompetition lcc = new LongChipCompetition();
-
+        lcc.initializeBeatles();
+        lcc.findTheChip();
+    }
+    
+    private void findTheChip() {
+    	for(int i = 0; i < theBeatles.size(); i++) {
+    		ArrayList<Chip> mealTime = theBeatles.get(i).getChips();
+    		for(int j = 0; j < mealTime.size(); j++) {
+    			if (longChip < mealTime.get(j).getLength()) {
+    				longChip = mealTime.get(j).getLength();
+    				System.out.println(namez = theBeatles.get(i).getName());
+    				System.out.println(longChip);
+    			}
+    		}
+    			
+    		
+    	}
+    	
     }
 
     private void initializeBeatles() {
