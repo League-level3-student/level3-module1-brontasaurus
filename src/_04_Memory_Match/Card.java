@@ -18,6 +18,7 @@ public class Card extends JButton {
      */
     public static String cardImagesPath = "/CardImages/";
     
+    private String suit;
     private int value;
     private boolean faceUp = false;
     private boolean matched = false;
@@ -26,8 +27,9 @@ public class Card extends JButton {
     private static String faceDownImageFilename = cardImagesPath + "B1.png";
     public static ImageIcon faceDownIcon = null;;
 
-    public Card( int value ) {
+    public Card( int value, String suit ) {
         this.value = value;
+        this.suit = suit;
         setup();
     }
     
@@ -58,6 +60,14 @@ public class Card extends JButton {
         return this.value;
     }
 
+    public void setSuit(String suit) {
+        this.suit = suit;
+    }
+
+    public String getSuit() {
+        return this.suit;
+    }
+    
     public void setMatched(boolean matched) {
         this.matched = matched;
     }
