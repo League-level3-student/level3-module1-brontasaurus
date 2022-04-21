@@ -1,6 +1,7 @@
 package _05_Retro_Sun;
 
 import java.awt.Dimension;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -17,7 +18,13 @@ public class RetroSun extends PApplet {
     static final int WIDTH = 800;
     static final int HEIGHT = 600;
 
+    ArrayList<SunChunk> mmmmmmmmmfts = new ArrayList<SunChunk>();
+    
     JFrame frame = new JFrame();
+    float why;
+    float h;
+    float x;
+    float w;
     
     // RGB colors
     int[] sunColors = {
@@ -29,6 +36,20 @@ public class RetroSun extends PApplet {
     int bgColor = color(31, 0, 48);
     int color;
 
+    public class SunChunk{
+    	float x;
+    	float why;
+    	float h;
+    	float w;
+    
+    
+    SunChunk(float x, float why, float w, float h){
+    	this.x = x;
+    	this.why = why;
+    	this.w = w;
+    	this.h = h;
+    }
+    }
     @Override
     public void settings() {
         // 1. Set the size of your sketch to at least 800 width, 600 height
@@ -40,6 +61,12 @@ public class RetroSun extends PApplet {
     public void setup() {
         // 2. Set bgColor as the background color
         background(bgColor);
+        mmmmmmmmmfts.add(new SunChunk((float)(WIDTH/2) - (width/4), (float)(height/2)+(width/4), (float)width,(float) 40));
+        
+        why = (height/2)+(width/4);
+        h = 40;
+        x = (WIDTH/2) - (width/4);
+        w = width;
     }
 
     @Override
@@ -72,13 +99,14 @@ loadPixels();
 
         // We want to change the color of our sun so use an if statement
         // to check if the pixel is the color of the yellow circle.
-int y = 400;
+int y;
 
 for (int i = 0; i < pixels.length; i++) {
 	if (pixels[i] == sunColors[0]) {
-		float step = map(y+i, (HEIGHT/2 -200), (HEIGHT/2 +200), 0, 1);
+		y= i/WIDTH;
+		float step = map(y, (HEIGHT/2 -200), (HEIGHT/2 +200), 0, 1);
 		color = interpolateColor(sunColors, step);
-		System.out.println(step);
+		//System.out.println(step);
 		
 		pixels[i] = color;
 		
@@ -121,17 +149,28 @@ updatePixels();
 
         // To draw each rectangle we need to find its x, y, width, height
         // *The y position can be any value within the sun:
-        //  float y = width / 2;
+
         // *The height can be any value you choose:
-        //  float h = 40;
+          
         // *The x position can be the center of the sun's x position minus the radius:
-        //  float x = sunCenterX - sunRadius
+          
         // *The width can be 2 times the radius
-        //  float w = 2 * sunRadius
+          
         
         // Do you see a section missing from the sun like in the 3rd image?
+for(int i = 0; i < mmmmmmmmmfts.size(); i++) {
+	
+if (mmmmmmmmmfts.get(i).h >= 0) {
+fill(bgColor);
+rect(mmmmmmmmmfts.get(i).x, mmmmmmmmmfts.get(i).why--, mmmmmmmmmfts.get(i).w, mmmmmmmmmfts.get(i).h);
+mmmmmmmmmfts.get(i).h= mmmmmmmmmfts.get(i).h-((float) 20/100);
+}
 
-        
+else {
+	mmmmmmmmmfts.remove(i);
+	setup();
+}
+}
         /*
          * PART 4: Moving the missing sun sections
          *
@@ -173,6 +212,7 @@ updatePixels();
         // code you wrote for the 1 missing sun section.
         // HINT: You can use the Rectangle class defined below to create
         // a list of Rectangles.
+
 
         
         /*
