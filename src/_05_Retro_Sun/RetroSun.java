@@ -171,6 +171,13 @@ else {
 	setup();
 }
 }
+	//System.out.println((int)Math.round(mmmmmmmmmfts.get(mmmmmmmmmfts.size()-1).why));
+if ((int)Math.round(mmmmmmmmmfts.get(mmmmmmmmmfts.size()-1).why) == 460) {
+	//System.out.println("this is literally the worst sun i have ever experienced it's even worse than the real sun " );
+	mmmmmmmmmfts.add(new SunChunk((float)(WIDTH/2) - (width/4), (float)(height/2)+(width/4), (float)width,(float) 40));
+}
+
+
         /*
          * PART 4: Moving the missing sun sections
          *
