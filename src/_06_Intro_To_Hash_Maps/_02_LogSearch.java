@@ -55,19 +55,50 @@ public class _02_LogSearch implements ActionListener {
 		if (e.getSource() == button2) {
 			String ID = JOptionPane.showInputDialog("Enter ID number");
 			
-			for (int i = 0; i < studentRecords.size(); i++) {
-				if (ID == NEED TO MATCH WITH SOMETHING HELP ME FUTURE ME PLEASE I WANT TO GO HOME) {
-					JOptionPane.showMessageDialog(null, studentRecords.get(i));
+			String n = studentRecords.get(Integer.parseInt(ID));
+			
+				if (n != null) {
+					JOptionPane.showMessageDialog(null, n );
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "That entry does not exist");
 				}
 				
-			}
+			
 		}
+		
+		if (e.getSource() == button3) {
+			
+			String list = null;
+			
+			for(Integer i : studentRecords.keySet()){
+				
+				if (list == null) {
+					list = "ID: " + i + " Name: " + studentRecords.get(i) + "\n";
+					
+				}
+				else {
+					list = list + "ID: " + i + " Name: " + studentRecords.get(i) + "\n";
+				}
+				
+	        }
+			JOptionPane.showMessageDialog(null, list);
+			
+			
+			
+			 
+			
+			
+		
+			
+		
+			 
 		
 		
 	}
+	}
+}
+	
 	
 	
 	
@@ -106,4 +137,4 @@ public class _02_LogSearch implements ActionListener {
      *      user that the ID is not in the list.
      */
 
-}
+
