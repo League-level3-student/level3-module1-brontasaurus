@@ -2,6 +2,10 @@ package _08_California_Weather;
 
 import java.util.HashMap;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 /*
  * OBJECTIVE:
  * 1. Create a program that allows the user to search for the weather
@@ -29,6 +33,20 @@ import java.util.HashMap;
 
 public class CaliforniaWeather {
     
+	JPanel panel = new JPanel();
+	JFrame frame = new JFrame();
+	JButton one = new JButton();
+	JButton two = new JButton();
+	JButton three = new JButton();
+	
+	
+	
+	
+	
+	
+	
+	
+	
     void start() {
         HashMap<String, WeatherData> weatherData = Utilities.getWeatherData();
         

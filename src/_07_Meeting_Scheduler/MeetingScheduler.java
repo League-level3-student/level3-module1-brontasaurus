@@ -1,5 +1,6 @@
 package _07_Meeting_Scheduler;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MeetingScheduler {
@@ -25,12 +26,28 @@ public class MeetingScheduler {
      */
     public static Schedule getMutualAvailability(Schedule person1, Schedule person2) {
         
-    	for(Integer i : Schedule.getSchedule.keySet()){
-            
+    	Schedule returned = new Schedule();
+    	
+    	for(String i : person1.getSchedule().keySet()){
+    		for(String j : person2.getSchedule().keySet()){
+    			if (i == j) {
+    				ArrayList<Integer> peep = person1.getSchedule().get(i);
+    				ArrayList<Integer> pyyp = person2.getSchedule().get(j);
+    				
+    				for (Integer e : peep) {
+    				//for(int e = 0; e < peep.size(); e++) {
+    					if (pyyp.contains(e)) {
+    						returned.addAvailability(i, e);
+    						
+    					}
+    				}
+    			}
+    			
+    		}
         }
     	
        
-    return null;
+    return returned;
     }
     
     
