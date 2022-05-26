@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /*
@@ -14,6 +15,8 @@ import javax.swing.JPanel;
  * from a day in December 2020.
  * Example: User: Encinitas
  *          Program: Encinitas is Overcast with a tempeature of 59.01 �F
+ * 
+ * CHECK ^^^^
  * 
  * 2. Create a way for the user to specify the weather condition and then
  * list the cities that have those conditions.
@@ -33,31 +36,40 @@ import javax.swing.JPanel;
 
 public class CaliforniaWeather {
     
-	JPanel panel = new JPanel();
 	JFrame frame = new JFrame();
+	JPanel panel = new JPanel();
 	JButton one = new JButton();
 	JButton two = new JButton();
-	JButton three = new JButton();
+	JButton tree = new JButton();
 	
-	
-	
-	
-	
-	
-	
-	
+		
+		
+
 	
     void start() {
+    	
         HashMap<String, WeatherData> weatherData = Utilities.getWeatherData();
+        WeatherData datum = null;
+        
+        String name = JOptionPane.showInputDialog("Enter a city in california");
+        
+        for(String n : weatherData.keySet()){
+            if (n.equalsIgnoreCase(name)) {
+          	  name = Utilities.capitalizeWords( name );
+          	  datum = weatherData.get(name);
+            }
+        }  
         
         // All city keys have the first letter capitalized of each word
         String cityName = Utilities.capitalizeWords( "National City" );
-        WeatherData datum = weatherData.get(cityName);
+        
         
         if( datum == null ) {
-            System.out.println("Unable to find weather data for: " + cityName);
+            System.out.println("Unable to find weather data for: " + name);
         } else {
-            System.out.println(cityName + " is " + datum.weatherSummary + " with a temperature of " + datum.temperatureF + " F");
+            System.out.println(name + " is " + datum.weatherSummary + " with a temperature of " + datum.temperatureF + " F");
         }
+        
+      
     }
 }
