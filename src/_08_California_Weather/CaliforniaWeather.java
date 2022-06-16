@@ -1,6 +1,9 @@
 package _08_California_Weather;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -34,7 +37,7 @@ import javax.swing.JPanel;
  * temperature, you can get a free API key at: https://openweathermap.org/api
  */
 
-public class CaliforniaWeather {
+public class CaliforniaWeather implements ActionListener{
     
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
@@ -42,34 +45,83 @@ public class CaliforniaWeather {
 	JButton two = new JButton();
 	JButton tree = new JButton();
 	
-		
-		
-
 	
     void start() {
+ 
+    	frame.add(panel);
+    	panel.add(one);
+    	panel.add(two);
+    	panel.add(tree);
     	
-        HashMap<String, WeatherData> weatherData = Utilities.getWeatherData();
-        WeatherData datum = null;
-        
-        String name = JOptionPane.showInputDialog("Enter a city in california");
-        
-        for(String n : weatherData.keySet()){
-            if (n.equalsIgnoreCase(name)) {
-          	  name = Utilities.capitalizeWords( name );
-          	  datum = weatherData.get(name);
-            }
-        }  
-        
-        // All city keys have the first letter capitalized of each word
-        String cityName = Utilities.capitalizeWords( "National City" );
-        
-        
-        if( datum == null ) {
-            System.out.println("Unable to find weather data for: " + name);
-        } else {
-            System.out.println(name + " is " + datum.weatherSummary + " with a temperature of " + datum.temperatureF + " F");
-        }
-        
+    	one.setText("Search City");
+    	two.setText("Search Weather Condition");
+    	tree.setText("Search Temp");
+    	
+    	one.addActionListener(this);
+    	two.addActionListener(this);
+    	tree.addActionListener(this);
+    	
+    	frame.pack();
+    	frame.setVisible(true);
+    	
+    	
       
     }
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if (e.getSource() == one) {
+			HashMap<String, WeatherData> weatherData = Utilities.getWeatherData();
+	        WeatherData datum = null;
+	        
+	        String name = JOptionPane.showInputDialog("Enter a city in california");
+	        
+	        for(String n : weatherData.keySet()){
+	            if (n.equalsIgnoreCase(name)) {
+	          	  name = Utilities.capitalizeWords( name );
+	          	  datum = weatherData.get(name);
+	            }
+	        }  
+	        
+	        // All city keys have the first letter capitalized of each word
+	        String cityName = Utilities.capitalizeWords( "National City" );
+	        
+	        
+	        if( datum == null ) {
+	            System.out.println("Unable to find weather data for: " + name);
+	        } else {
+	            System.out.println(name + " is " + datum.weatherSummary + " with a temperature of " + datum.temperatureF + " F");
+	        }
+	        
+		}
+		
+		if (e.getSource() == two) {
+			HashMap<String, WeatherData> weatherData = Utilities.getWeatherData();
+	        String datum = "";
+			
+			String weather = JOptionPane.showInputDialog("Enter Weather Condition");
+			
+		
+			
+	        for(Entry<String, WeatherData> w : weatherData.entrySet()){
+	        	if (w.getValue().weatherSummary.toLowerCase().contains(weather.toLowerCase())) {
+	          	  weather = Utilities.capitalizeWords( weather );
+	          	  datum = datum + w.getKey() + ", " ;
+	            }
+	        }
+	        
+	        if( datum == null ) {
+	            System.out.println("Unable to find cities with " + weather + " weather");
+	        } else {
+	            System.out.println(datum);
+	        }
+			
+		}
+		
+		if (e.getSource() == tree) {
+			
+		}
+	}
 }
