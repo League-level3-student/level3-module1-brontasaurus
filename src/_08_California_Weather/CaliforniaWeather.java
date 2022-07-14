@@ -121,7 +121,33 @@ public class CaliforniaWeather implements ActionListener{
 		}
 		
 		if (e.getSource() == tree) {
-			
+			HashMap<String, WeatherData> weatherData = Utilities.getWeatherData();
+	        WeatherData datum = null;
+	        
+	        String minErature = JOptionPane.showInputDialog("Enter minimum temperature");
+	        String maxErature = JOptionPane.showInputDialog("Enter maximum temperature");
+	       
+	        double minTemp = Double.parseDouble(minErature);
+	        double maxTemp = Double.parseDouble(maxErature);
+	        
+	        ArrayList<Integer> cityTemps = new ArrayList<Integer>();
+	        for(String city : weatherData.keySet()){
+	        	datum = weatherData.get(city);
+	            if (minTemp < datum.temperatureF && datum.temperatureF < maxTemp) {
+	          	  
+	          	  
+	            }
+	        }  
+	        
+	        // All city keys have the first letter capitalized of each word
+	        String cityName = Utilities.capitalizeWords( "National City" );
+	        
+	        
+	        if( datum == null ) {
+	            System.out.println("Unable to find weather data for: " + name);
+	        } else {
+	            System.out.println(name + " is " + datum.weatherSummary + " with a temperature of " + datum.temperatureF + " F");
+	        }
 		}
 	}
 }
