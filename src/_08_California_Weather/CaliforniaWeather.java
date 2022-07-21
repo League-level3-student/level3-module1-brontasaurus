@@ -2,6 +2,7 @@ package _08_California_Weather;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
@@ -131,8 +132,17 @@ public class CaliforniaWeather implements ActionListener{
 	        double maxTemp = Double.parseDouble(maxErature);
 	        
 	        ArrayList<Integer> cityTemps = new ArrayList<Integer>();
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
 	        for(String city : weatherData.keySet()){
 	        	datum = weatherData.get(city);
+	        	
 	            if (minTemp < datum.temperatureF && datum.temperatureF < maxTemp) {
 	          	  
 	          	  
