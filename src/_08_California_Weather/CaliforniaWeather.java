@@ -100,7 +100,7 @@ public class CaliforniaWeather implements ActionListener{
 		
 		if (e.getSource() == two) {
 			HashMap<String, WeatherData> weatherData = Utilities.getWeatherData();
-	        String datum = "";
+	       String datum = "";
 			
 			String weather = JOptionPane.showInputDialog("Enter Weather Condition");
 			
@@ -113,7 +113,7 @@ public class CaliforniaWeather implements ActionListener{
 	            }
 	        }
 	        
-	        if( datum == null ) {
+	        if( datum == "" ) {
 	            System.out.println("Unable to find cities with " + weather + " weather");
 	        } else {
 	            System.out.println(datum);
@@ -154,10 +154,11 @@ public class CaliforniaWeather implements ActionListener{
 	        
 	        
 	        if( datum == null ) {
-	            System.out.println("Unable to find weather data for: " + name);
+	            System.out.println("Unable to find weather data for: " + minTemp + " to " + maxTemp);
 	        } else {
-	            System.out.println(name + " is " + datum.weatherSummary + " with a temperature of " + datum.temperatureF + " F");
+	            System.out.println(datum + " is " + datum.weatherSummary + " with a temperature of " + datum.temperatureF + " F");
 	        }
 		}
+		
 	}
 }
