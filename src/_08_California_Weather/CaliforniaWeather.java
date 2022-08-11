@@ -138,13 +138,11 @@ public class CaliforniaWeather implements ActionListener{
 	        
 	        
 	        
-	        
-	        
 	        for(String city : weatherData.keySet()){
 	        	datum = weatherData.get(city);
 	        	
 	            if (minTemp < datum.temperatureF && datum.temperatureF < maxTemp) {
-	          	  
+	          	  System.out.println(city);
 	          	  
 	            }
 	        }  
@@ -153,11 +151,12 @@ public class CaliforniaWeather implements ActionListener{
 	        String cityName = Utilities.capitalizeWords( "National City" );
 	        
 	        
-	        if( datum == null ) {
+	       /* if( datum == null ) {
 	            System.out.println("Unable to find weather data for: " + minTemp + " to " + maxTemp);
 	        } else {
 	            System.out.println(datum + " is " + datum.weatherSummary + " with a temperature of " + datum.temperatureF + " F");
 	        }
+	        */
 		}
 		
 	}
